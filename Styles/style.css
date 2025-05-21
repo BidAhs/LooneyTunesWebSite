@@ -1,0 +1,44 @@
+body{
+    background:rgb(138, 138, 138);
+}
+
+label {
+    font-size:20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#login {
+    width: 300px;
+    padding: 35px;
+    margin: 25px;
+    text-align: center;
+    background:rgb(172, 172, 172);
+    border-radius: 50px;
+    box-shadow: 2px 2px 10px #555;
+}
+
+a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background:rgb(138, 138, 138);
+}
+
+h1 {
+    color:black;
+    font-size:4em;
+    text-align: center;
+}
+
+input {
+    height: 25px;
+    border-radius: 10px;
+}
