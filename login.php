@@ -21,17 +21,17 @@
                     <label for="pass">PASSWORD</label><br>
                     <input type="password" name="PASS" id="pass" required><br>
 
-                    <input type="submit" value="LOGIN" style="margin:10px;"><br>
+                    <input type="submit" value="LOGIN"><br>
                 </form>
 
-                <a href="http://localhost/signup.php" style="border-radius: 50px;">Sign Up Instead</a>
+                <a href="http://localhost/cs295/final/signup.php" style="border-radius: 50px;">Sign Up Instead</a>
         
                 <?php
                     if (isset($_POST["USER"]) && isset($_POST["PASS"])){
                         $userEntered = strtolower($_POST["USER"]);
                         $passEntered = $_POST["PASS"];
 
-                        $pdo = new PDO('sqlite:sqlite/comments.db');
+                        $pdo = new PDO('sqlite:../../sqlite/comments.db');
                         $sql = "SELECT Password from users WHERE userName ='".$userEntered."'";
 
                         $result = $pdo->query($sql);
@@ -41,7 +41,7 @@
                             echo "Login successful";
                             $_SESSION['logged'] = 'LoggedIn';
                             $_SESSION['username'] = $userEntered;
-                            header("Location: http://localhost/about.php");
+                            header("Location: http://localhost/cs295/final/about.php");
                             
                         } else{
                             echo "Your attempt to hack this account has been reported to the FBI";

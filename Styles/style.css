@@ -1,5 +1,6 @@
-body{
-    background:rgb(138, 138, 138);
+body {
+    margin: 0;
+    background: linear-gradient(to bottom right, rgb(169, 169, 169), rgb(95, 95, 95));
 }
 
 label {
@@ -36,9 +37,17 @@ h1 {
     color:black;
     font-size:4em;
     text-align: center;
+    font-family: 'Bangers', cursive;
 }
 
 input {
     height: 25px;
     border-radius: 10px;
+    background:rgb(218, 218, 218);
+
+}
+
+input[type="submit"] {
+    margin:10px; 
+    background:rgb(218, 218, 218);
 }

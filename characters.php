@@ -2,7 +2,7 @@
     if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
     if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== 'LoggedIn') {
-        echo '<a href="http://localhost/login.php">You are not logged in. Login instead</a>';
+        echo '<a href="http://localhost/cs295/final/login.php">You are not logged in. Login instead</a>';
         die();
     }
 ?>   
@@ -11,6 +11,8 @@
     <head>
         <link rel="stylesheet" href="Styles/navBar.css">
         <link rel="stylesheet" href="Styles/style.css">
+        <link rel="icon" type="image/x-icon" href="images/looney.ico">
+
         <style>
             .chrM {
                 flex: 0 0 calc(50% - 150px); 
@@ -33,23 +35,21 @@
                 margin: 0 auto;       
             }
         </style>
-
-        <link rel="icon" type="image/x-icon" href="images/looney.ico">
         <title>Characters</title>
     </head>
     <body>
         <ul>
-            <li> <a href="http://localhost/cabout.php">About</a></li>
-            <li> <a href="http://localhost/characters.php">Meet the Characters</a></li>
-            <li> <a href="http://localhost/messageboard.php">Message Board</a></li>
-            <li style="float:right"><a class="active" href="http://localhost/login.php">Logout</a></li>
+            <li> <a href="http://localhost/cs295/final/about.php">About</a></li>
+            <li> <a href="http://localhost/cs295/final/characters.php">Meet the Characters</a></li>
+            <li> <a href="http://localhost/cs295/final/messageboard.php">Message Board</a></li>
+            <li style="float:right"><a class="active" href="http://localhost/cs295/final/login.php">Logout</a></li>
         </ul>
 
         <h1>Characters</h1>
         <div class="midChr">
             <?php
                 if ($_SESSION['logged'] == 'LoggedIn'){
-                    $pdo = new PDO('sqlite:sqlite/characters.db');
+                    $pdo = new PDO('sqlite:../../sqlite/characters.db');
                     $sql = "SELECT * FROM characters";
 
                     $results = $pdo->query($sql);

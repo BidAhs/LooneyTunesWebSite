@@ -2,7 +2,7 @@
     if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
     if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== 'LoggedIn') {
-        echo '<a href="http://localhost/login.php">You are not logged in. Login instead</a>';
+        echo '<a href="http://localhost/cs295/final/login.php">You are not logged in. Login instead</a>';
         die();
     }
 ?>
@@ -11,13 +11,15 @@
     <head>
         <link rel="stylesheet" href="Styles/navBar.css">
         <link rel="stylesheet" href="Styles/style.css">
+        <link rel="icon" type="image/x-icon" href="images/looney.ico">
+
         <style>
             .fixed-form {
                 position: sticky;
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                background: rgb(138, 138, 138);
+                background: transparent;
                 z-index: 1000;
             }
 
@@ -40,25 +42,23 @@
                 padding-bottom: 80px;
             }
         </style>
-
-        <link rel="icon" type="image/x-icon" href="images/looney.ico">
         <title>Message Board</title>
     </head>
 
     <body>
         <ul>
-            <li> <a href="http://localhost/about.php">About</a></li>
-            <li> <a href="http://localhost/characters.php">Meet the Characters</a></li>
-            <li> <a href="http://localhost/messageboard.php">Message Board</a></li>
-            <li style="float:right"><a class="active" href="http://localhost/login.php">Logout</a></li>
+            <li> <a href="http://localhost/cs295/final/about.php">About</a></li>
+            <li> <a href="http://localhost/cs295/final/characters.php">Meet the Characters</a></li>
+            <li> <a href="http://localhost/cs295/final/messageboard.php">Message Board</a></li>
+            <li style="float:right"><a class="active" href="http://localhost/cs295/final/login.php">Logout</a></li>
         </ul>
 
-        <h1 id="head">Message Board</h1>
+        <h1>Message Board</h1>
 
         <div class="mid">
             <?php
                 if ($_SESSION['logged'] == 'LoggedIn'){
-                    $pdo = new PDO('sqlite:sqlite/comments.db');
+                    $pdo = new PDO('sqlite:../../sqlite/comments.db');
 
                     $username = $_SESSION['username'];
                     $userQuery = $pdo->query("SELECT id FROM users WHERE userName = '$username'");
@@ -74,14 +74,15 @@
                         }
 
                     } else {
-                        echo "<p>User not found.</p>";
+                        echo "<p> User not found. </p>";
                     }
                 }
             ?>
+
             <div class="fixed-form">
                 <form action="messageBoard.php" method="post" class="mid">
                     <p class="msg"> Write a message: <br> 
-                    <input type="text" name="mesg"> <br>
+                    <input type="text" name="mesg" required> <br>
                     <input style="margin:3px;" type="submit" value="SEND"> </p>
                 </form>
             </div>
@@ -102,7 +103,7 @@
                         echo "<p>No userID</p>";
                     }
 
-                    header("Location: http://localhost/messageBoard.php");
+                    header("Location: http://localhost/cs295/final/messageBoard.php");
                 }                
             ?>
         </div>
